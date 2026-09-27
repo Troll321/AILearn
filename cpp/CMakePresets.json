@@ -1,0 +1,59 @@
+{
+    "version": 10,
+    "cmakeMinimumRequired": {
+        "major": 4
+    },
+    "configurePresets": [
+        {
+            "name": "defaultC",
+            "displayName": "Default Config",
+            "description": "Default Configuration",
+            "binaryDir": "${sourceDir}/build",
+            "installDir": "${sourceDir}/install"
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "defaultB",
+            "displayName": "Default Build",
+            "description": "Default Build",
+            "configurePreset": "defaultC",
+            "cleanFirst": false
+        },
+        {
+            "name": "cleanB",
+            "displayName": "Default Build",
+            "description": "Default Build",
+            "configurePreset": "defaultC",
+            "cleanFirst": true
+        }
+    ],
+    "workflowPresets": [
+        {
+            "name": "defaultW",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "defaultC"
+                },
+                {
+                    "type": "build",
+                    "name": "defaultB"
+                }
+            ]
+        },
+        {
+            "name": "cleanW",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "defaultC"
+                },
+                {
+                    "type": "build",
+                    "name": "cleanB"
+                }
+            ]
+        }
+    ]
+}

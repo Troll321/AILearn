@@ -1,0 +1,12 @@
+#!/bin/bash
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+cd "$SCRIPT_DIR"
+
+if [[ -z $1 ]]; then
+    printf "\n---------- Using defaultW ----------\n\n"
+    cmake --workflow --preset defaultW
+else
+    printf "\n---------- Using $1 ----------\n\n"
+    cmake --workflow --preset $1
+fi
+printf "\n\n---------- END BUILD ----------\n\n"
